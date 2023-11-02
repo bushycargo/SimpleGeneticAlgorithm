@@ -22,8 +22,8 @@ public class SimpleGeneticAlgorithm {
         this.algorithm = algorithm;
     }
 
-    public void runAlgorithm(){
-        Data data = new Data(cycles, populationSize);
+    public Data runAlgorithm(){
+        Data data = new Data(cycles);
         Random random = new Random();
 
         Population population = new Population(geneLength);
@@ -33,7 +33,15 @@ public class SimpleGeneticAlgorithm {
             Population offspring = new Population(geneLength, populationSize);
 
             tournamentSelection(population, offspring);
+            crossover(offspring);
+
+            population.setIndividuals(offspring.getIndividuals().clone());
+            data.averageUtility[cycle] = population.getAverageUtility();
+            data.maxUtility[cycle] = population.getMaxUtility();
+            data.minUtility[cycle] = population.getMinUtility();
         }
+
+        return data;
     }
 
     private void tournamentSelection(Population population, Population offspring){

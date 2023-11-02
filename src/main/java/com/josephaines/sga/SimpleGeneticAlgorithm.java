@@ -1,6 +1,9 @@
 package com.josephaines.sga;
 
 import com.josephaines.sga.individual.Algorithm;
+import com.josephaines.sga.individual.Individual;
+
+import java.util.Random;
 
 public class SimpleGeneticAlgorithm {
     int populationSize, geneLength, cycles;
@@ -20,6 +23,11 @@ public class SimpleGeneticAlgorithm {
     }
 
     public void runAlgorithm(){
+        Data data = new Data(cycles, populationSize);
+        Random random = new Random();
+
+        Population population = new Population(geneLength);
+        population.generatePopulation(algorithm, populationSize, min, max);
 
     }
 }

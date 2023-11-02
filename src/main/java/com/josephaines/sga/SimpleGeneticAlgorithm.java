@@ -34,6 +34,7 @@ public class SimpleGeneticAlgorithm {
 
             tournamentSelection(population, offspring);
             crossover(offspring);
+            floatMutation(offspring);
 
             population.setIndividuals(offspring.getIndividuals().clone());
             data.averageUtility[cycle] = population.getAverageUtility();
@@ -56,6 +57,24 @@ public class SimpleGeneticAlgorithm {
             }else {
                 offspring.setIndividual(i, new Individual(algorithm, offspringTwo.getGenes().clone()));
             }
+        }
+    }
+
+    private void crossover(Population offspring){
+        Random random = new Random();
+
+        for (int i = 0; i < offspring.getPopulationSize(); i = i + 2) {
+            float[] individualOne = offspring.getIndividuals()[i].getGenes().clone();
+            float[] individualTwo = offspring.getIndividuals()[i + 1].getGenes().clone();
+            float[] individualThree = offspring.getIndividuals()[i].getGenes().clone();
+
+            int crossover = random.nextInt(geneLength);
+            for (int j = crossover; j < geneLength; j++) {
+                individualOne[j] = individualTwo[j];
+                individualTwo[j] = individualThree[j];
+            }
+            offspring.setIndividual(i, new Individual(algorithm, individualOne));
+            offspring.setIndividual(i + 1, new Individual(algorithm, individualTwo));
         }
     }
 }

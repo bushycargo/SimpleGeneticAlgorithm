@@ -64,4 +64,26 @@ public class Population {
     public void setIndividual(int i, Individual individual) {
         individuals[i] = individual;
     }
+
+    public float getMaxUtility() {
+        float max = -999999999f;
+        for (Individual ind :
+                individuals) {
+            if (ind.test() > max){
+                max = ind.test();
+            }
+        }
+        return max;
+    }
+
+    public float getMinUtility() {
+        float min = 999999999f;
+        for (Individual ind :
+                individuals) {
+            if (ind.test() < min){
+                min = ind.test();
+            }
+        }
+        return min;
+    }
 }

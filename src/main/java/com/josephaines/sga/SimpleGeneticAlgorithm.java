@@ -29,6 +29,11 @@ public class SimpleGeneticAlgorithm {
         Population population = new Population(geneLength);
         population.generatePopulation(algorithm, populationSize, min, max);
 
+        for (int cycle = 0; cycle < cycles; cycle++) {
+            Population offspring = new Population(geneLength, populationSize);
+
+            tournamentSelection(population, offspring);
+        }
     }
 
     private void tournamentSelection(Population population, Population offspring){

@@ -53,4 +53,8 @@ public class Individual {
         }
         return utility;
     }
+
+    public Algorithm getAlgorithm() {
+        return algorithm;
+    }
 }

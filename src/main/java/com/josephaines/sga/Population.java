@@ -43,21 +43,25 @@ public class Population {
         return utility;
     }
 
-    public void generatePopulation(Algorithm algorithm, int populationSize, float min, float max){
+    public void generatePopulation(Algorithm algorithm, int populationSize, float geneMin, float geneMax){
         individuals = new Individual[populationSize];
 
         for (int i = 0; i < populationSize; i++) {
             float[] tempGenes = new float[geneLength];
 
             for (int j = 0; j < geneLength; j++) {
-                tempGenes[j] = random.nextFloat(min, max);
-                Individual individual = new Individual(algorithm, tempGenes);
-                individuals[i] = individual;
+                tempGenes[j] = random.nextFloat(geneMin, geneMax);
             }
+            Individual individual = new Individual(algorithm, tempGenes);
+            individuals[i] = individual;
         }
     }
 
     public float getAverageUtility(){
         return testPopulation() / individuals.length;
+    }
+
+    public void setIndividual(int i, Individual individual) {
+        individuals[i] = individual;
     }
 }

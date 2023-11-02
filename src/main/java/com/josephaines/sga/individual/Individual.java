@@ -57,4 +57,8 @@ public class Individual {
     public Algorithm getAlgorithm() {
         return algorithm;
     }
+
+    public void setGene(int i, float gene) {
+        genes[i] = gene;
+    }
 }

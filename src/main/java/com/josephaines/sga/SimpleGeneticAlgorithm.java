@@ -77,4 +77,30 @@ public class SimpleGeneticAlgorithm {
             offspring.setIndividual(i + 1, new Individual(algorithm, individualTwo));
         }
     }
+
+    private void floatMutation(Population offspring) {
+        Random random = new Random();
+        for (Individual individual :
+                offspring.getIndividuals()) {
+            Individual newIndividual = new Individual(algorithm, geneLength);
+            for (int i = 0; i < geneLength; i++) {
+                float gene = individual.getGenes().clone()[i];
+                float probability = random.nextFloat();
+                if (probability < mutationProbability) {
+                    float alter = random.nextFloat(-mutationStep, mutationStep);
+                    gene = gene + alter;
+                    if (gene > max) {
+                        gene = max;
+                    }
+                    if (gene < min){
+                        gene = min;
+                    }
+                    newIndividual.setGene(i, gene);
+                } else {
+                    newIndividual.setGene(i, gene);
+                }
+            }
+            individual.setGenes(newIndividual.getGenes().clone());
+        }
+    }
 }

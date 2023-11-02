@@ -30,4 +30,19 @@ public class SimpleGeneticAlgorithm {
         population.generatePopulation(algorithm, populationSize, min, max);
 
     }
+
+    private void tournamentSelection(Population population, Population offspring){
+        Random random = new Random();
+        for (int i = 0; i < populationSize; i++) {
+            Individual offspringOne = population.getIndividuals()[random.nextInt(populationSize)];
+            Individual offspringTwo = population.getIndividuals()[random.nextInt(populationSize)];
+
+//            Less than (<) as minimising
+            if (offspringOne.test() < offspringTwo.test()){
+                offspring.setIndividual(i, new Individual(algorithm, offspringOne.getGenes().clone()));
+            }else {
+                offspring.setIndividual(i, new Individual(algorithm, offspringOne.getGenes().clone()));
+            }
+        }
+    }
 }

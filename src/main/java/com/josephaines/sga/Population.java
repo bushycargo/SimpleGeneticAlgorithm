@@ -60,4 +60,8 @@ public class Population {
     public float getAverageUtility(){
         return testPopulation() / individuals.length;
     }
+
+    public void setIndividual(int i, Individual individual) {
+        individuals[i] = individual;
+    }
 }

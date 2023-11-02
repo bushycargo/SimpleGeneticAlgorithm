@@ -22,8 +22,8 @@ public class SimpleGeneticAlgorithm {
         this.algorithm = algorithm;
     }
 
-    public void runAlgorithm(){
-        Data data = new Data(cycles, populationSize);
+    public Data runAlgorithm(){
+        Data data = new Data(cycles);
         Random random = new Random();
 
         Population population = new Population(geneLength);
@@ -33,7 +33,16 @@ public class SimpleGeneticAlgorithm {
             Population offspring = new Population(geneLength, populationSize);
 
             tournamentSelection(population, offspring);
+            crossover(offspring);
+            floatMutation(offspring);
+
+            population.setIndividuals(offspring.getIndividuals().clone());
+            data.averageUtility[cycle] = population.getAverageUtility();
+            data.maxUtility[cycle] = population.getMaxUtility();
+            data.minUtility[cycle] = population.getMinUtility();
         }
+
+        return data;
     }
 
     private void tournamentSelection(Population population, Population offspring){
@@ -46,8 +55,52 @@ public class SimpleGeneticAlgorithm {
             if (offspringOne.test() < offspringTwo.test()){
                 offspring.setIndividual(i, new Individual(algorithm, offspringOne.getGenes().clone()));
             }else {
-                offspring.setIndividual(i, new Individual(algorithm, offspringOne.getGenes().clone()));
+                offspring.setIndividual(i, new Individual(algorithm, offspringTwo.getGenes().clone()));
             }
+        }
+    }
+
+    private void crossover(Population offspring){
+        Random random = new Random();
+
+        for (int i = 0; i < offspring.getPopulationSize(); i = i + 2) {
+            float[] individualOne = offspring.getIndividuals()[i].getGenes().clone();
+            float[] individualTwo = offspring.getIndividuals()[i + 1].getGenes().clone();
+            float[] individualThree = offspring.getIndividuals()[i].getGenes().clone();
+
+            int crossover = random.nextInt(geneLength);
+            for (int j = crossover; j < geneLength; j++) {
+                individualOne[j] = individualTwo[j];
+                individualTwo[j] = individualThree[j];
+            }
+            offspring.setIndividual(i, new Individual(algorithm, individualOne));
+            offspring.setIndividual(i + 1, new Individual(algorithm, individualTwo));
+        }
+    }
+
+    private void floatMutation(Population offspring) {
+        Random random = new Random();
+        for (Individual individual :
+                offspring.getIndividuals()) {
+            Individual newIndividual = new Individual(algorithm, geneLength);
+            for (int i = 0; i < geneLength; i++) {
+                float gene = individual.getGenes().clone()[i];
+                float probability = random.nextFloat();
+                if (probability < mutationProbability) {
+                    float alter = random.nextFloat(-mutationStep, mutationStep);
+                    gene = gene + alter;
+                    if (gene > max) {
+                        gene = max;
+                    }
+                    if (gene < min){
+                        gene = min;
+                    }
+                    newIndividual.setGene(i, gene);
+                } else {
+                    newIndividual.setGene(i, gene);
+                }
+            }
+            individual.setGenes(newIndividual.getGenes().clone());
         }
     }
 }

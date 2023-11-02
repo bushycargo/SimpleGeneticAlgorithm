@@ -8,18 +8,20 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        int populationSize = 10;
-        int geneLength = 10;
-        int cycles = 10;
+        int populationSize = 50;
+        int geneLength = 20;
+        int cycles = 50;
         float mutationProbability = (float) 1 /populationSize;
         float mutationStep = 0.05f;
-        float min = -5;
-        float max = 5;
+        float min = -5f;
+        float max = 10f;
 
         SimpleGeneticAlgorithm simpleGeneticAlgorithm = new SimpleGeneticAlgorithm(populationSize, geneLength,
-                cycles, mutationProbability, mutationStep, min, max, Algorithm.ONE);
+                cycles, mutationProbability, mutationStep, min, max, Algorithm.TWO);
 
         Data data = simpleGeneticAlgorithm.runAlgorithm();
+        System.out.println(Arrays.toString(data.maxUtility));
         System.out.println(Arrays.toString(data.averageUtility));
+        System.out.println(Arrays.toString(data.minUtility));
     }
 }

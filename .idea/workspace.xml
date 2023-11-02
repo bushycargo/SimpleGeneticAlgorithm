@@ -4,19 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="394ec379-dcdc-44c9-b5c1-f0e7af1ddc4c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/josephaines/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/josephaines/sga/Population.java" afterDir="false" />
+    <list default="true" id="394ec379-dcdc-44c9-b5c1-f0e7af1ddc4c" name="Changes" comment="Created a Population class to handle Individuals">
       <change afterPath="$PROJECT_DIR$/src/main/java/com/josephaines/sga/SimpleGeneticAlgorithm.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/josephaines/sga/individual/Algorithm.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/josephaines/sga/individual/Individual.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,11 +56,51 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1698916491509</updated>
-      <workItem from="1698916492563" duration="5090000" />
+      <workItem from="1698916492563" duration="5436000" />
     </task>
+    <task id="LOCAL-00001" summary="Inital Commit">
+      <option name="closed" value="true" />
+      <created>1698921646040</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1698921646040</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Created enum to select algorithm.">
+      <option name="closed" value="true" />
+      <created>1698921671561</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1698921671561</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Created an Individual class that can test for both algorithms">
+      <option name="closed" value="true" />
+      <created>1698921692424</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1698921692424</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Created a Population class to handle Individuals">
+      <option name="closed" value="true" />
+      <created>1698921715880</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1698921715880</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Inital Commit" />
+    <MESSAGE value="Created enum to select algorithm." />
+    <MESSAGE value="Created an Individual class that can test for both algorithms" />
+    <MESSAGE value="Created a Population class to handle Individuals" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created a Population class to handle Individuals" />
   </component>
 </project>

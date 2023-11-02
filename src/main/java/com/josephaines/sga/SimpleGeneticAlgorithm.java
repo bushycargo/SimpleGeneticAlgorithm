@@ -46,7 +46,7 @@ public class SimpleGeneticAlgorithm {
             if (offspringOne.test() < offspringTwo.test()){
                 offspring.setIndividual(i, new Individual(algorithm, offspringOne.getGenes().clone()));
             }else {
-                offspring.setIndividual(i, new Individual(algorithm, offspringOne.getGenes().clone()));
+                offspring.setIndividual(i, new Individual(algorithm, offspringTwo.getGenes().clone()));
             }
         }
     }

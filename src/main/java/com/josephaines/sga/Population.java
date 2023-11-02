@@ -51,9 +51,9 @@ public class Population {
 
             for (int j = 0; j < geneLength; j++) {
                 tempGenes[j] = random.nextFloat(geneMin, geneMax);
-                Individual individual = new Individual(algorithm, tempGenes);
-                individuals[i] = individual;
             }
+            Individual individual = new Individual(algorithm, tempGenes);
+            individuals[i] = individual;
         }
     }
 

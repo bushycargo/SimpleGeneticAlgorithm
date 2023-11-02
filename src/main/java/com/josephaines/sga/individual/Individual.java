@@ -50,6 +50,11 @@ public class Individual {
                 }
                 utility+= (float) Math.pow(tempFloat, 4);
             }
+            case TEST -> {
+                for (float gene : genes) {
+                    utility += gene;
+                }
+            }
         }
         return utility;
     }

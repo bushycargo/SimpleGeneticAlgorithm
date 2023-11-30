@@ -4,13 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="394ec379-dcdc-44c9-b5c1-f0e7af1ddc4c" name="Changes" comment="Created a Population class to handle Individuals">
+    <list default="true" id="394ec379-dcdc-44c9-b5c1-f0e7af1ddc4c" name="Changes" comment="Floating point mutation.">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/josephaines/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/josephaines/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/josephaines/sga/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/josephaines/sga/Data.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/josephaines/sga/Population.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/josephaines/sga/Population.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/josephaines/sga/SimpleGeneticAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/josephaines/sga/SimpleGeneticAlgorithm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/josephaines/sga/individual/Algorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/josephaines/sga/individual/Algorithm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/josephaines/sga/individual/Individual.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/josephaines/sga/individual/Individual.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -30,7 +29,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="crossover" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -44,20 +43,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "crossover",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;float-mutation&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.josephaines.Main" />
@@ -75,6 +74,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -88,6 +89,15 @@
       <updated>1698916491509</updated>
       <workItem from="1698916492563" duration="5436000" />
       <workItem from="1698930433032" duration="1099000" />
+      <workItem from="1699106161550" duration="4194000" />
+      <workItem from="1699303103347" duration="4060000" />
+      <workItem from="1699370956284" duration="5093000" />
+      <workItem from="1699479529670" duration="169000" />
+      <workItem from="1699556072456" duration="1010000" />
+      <workItem from="1700505042184" duration="5192000" />
+      <workItem from="1700759399884" duration="1751000" />
+      <workItem from="1701030160651" duration="725000" />
+      <workItem from="1701318816111" duration="653000" />
     </task>
     <task id="LOCAL-00001" summary="Inital Commit">
       <option name="closed" value="true" />
@@ -121,7 +131,71 @@
       <option name="project" value="LOCAL" />
       <updated>1698921715880</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Added test algorithm">
+      <option name="closed" value="true" />
+      <created>1698942749283</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1698942749283</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Removed unused &quot;allUtility&quot;">
+      <option name="closed" value="true" />
+      <created>1698942764334</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1698942764334</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Edited output and also changed to algorithm two">
+      <option name="closed" value="true" />
+      <created>1698942784203</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1698942784203</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Added two methods to get the max and min.">
+      <option name="closed" value="true" />
+      <created>1698942827306</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1698942827306</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Massive bugfix consisting of three letters.&#10;Literally didnt work at all before.">
+      <option name="closed" value="true" />
+      <created>1698942882345</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1698942882345</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Added call for crossover and now outputs data correctly.">
+      <option name="closed" value="true" />
+      <created>1698942932867</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1698942932867</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Crossover">
+      <option name="closed" value="true" />
+      <created>1698942975673</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1698942975673</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Floating point mutation.">
+      <option name="closed" value="true" />
+      <created>1698943025634</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1698943025634</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -132,6 +206,21 @@
     <MESSAGE value="Created enum to select algorithm." />
     <MESSAGE value="Created an Individual class that can test for both algorithms" />
     <MESSAGE value="Created a Population class to handle Individuals" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created a Population class to handle Individuals" />
+    <MESSAGE value="Added test algorithm" />
+    <MESSAGE value="Removed unused &quot;allUtility&quot;" />
+    <MESSAGE value="Edited output and also changed to algorithm two" />
+    <MESSAGE value="Added two methods to get the max and min." />
+    <MESSAGE value="Massive bugfix consisting of three letters.&#10;Literally didnt work at all before." />
+    <MESSAGE value="Added call for crossover and now outputs data correctly." />
+    <MESSAGE value="Crossover" />
+    <MESSAGE value="Floating point mutation." />
+    <option name="LAST_COMMIT_MESSAGE" value="Floating point mutation." />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="population.individuals" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

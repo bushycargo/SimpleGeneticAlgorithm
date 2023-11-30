@@ -65,8 +65,6 @@ public class Main {
             gens2[i] = i;
         }
 
-        createGraph(avData1, gens1);
-
         XYChart chart1 = createGraph(avData1, gens1);
         XYChart chart2 = createGraph(avData2, gens2);
 

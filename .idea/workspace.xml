@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="394ec379-dcdc-44c9-b5c1-f0e7af1ddc4c" name="Changes" comment="Graphs and algorithm fix.">
+    <list default="true" id="394ec379-dcdc-44c9-b5c1-f0e7af1ddc4c" name="Changes" comment="Now averages data over 10 runs.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/josephaines/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/josephaines/Main.java" afterDir="false" />
     </list>
@@ -25,7 +25,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="crossover" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -49,7 +49,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "extract.method.default.visibility": "private",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "multi-run-averaging",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -203,7 +203,23 @@
       <option name="project" value="LOCAL" />
       <updated>1701319560828</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="getAverageData() can take an array of data and average it out.">
+      <option name="closed" value="true" />
+      <created>1701327042060</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1701327042060</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Now averages data over 10 runs.">
+      <option name="closed" value="true" />
+      <created>1701327069477</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1701327069477</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -223,7 +239,9 @@
     <MESSAGE value="Crossover" />
     <MESSAGE value="Floating point mutation." />
     <MESSAGE value="Graphs and algorithm fix." />
-    <option name="LAST_COMMIT_MESSAGE" value="Graphs and algorithm fix." />
+    <MESSAGE value="getAverageData() can take an array of data and average it out." />
+    <MESSAGE value="Now averages data over 10 runs." />
+    <option name="LAST_COMMIT_MESSAGE" value="Now averages data over 10 runs." />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

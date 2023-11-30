@@ -28,27 +28,17 @@ public class Individual {
             case ONE -> {
                 utility = (float) Math.pow((genes[0] - 1), 2);
                 for (int i = 1; i < genes.length; i++) {
-                    utility+= (float) (i*Math.pow(Math.pow(2*genes[i],2) - genes[i-1], 2));
+                    utility = (float) (utility + (i * (((2 * (Math.pow(genes[i], 2))) - genes[i - 1]) * (2 * (Math.pow(genes[i], 2))) - genes[i - 1])));
                 }
             }
             case TWO -> {
-                utility = 0;
-                for (float gene :
-                        genes) {
-                    utility+= (float) Math.pow(gene, 2);
-                }
-
-                float tempFloat = 0;
+                double utility1 = 0;
+                double utility2 = 0;
                 for (int i = 0; i < genes.length; i++) {
-                    tempFloat+= (0.5f * i * genes[i]);
+                    utility1 = utility1 + Math.pow(genes[i], 2);
+                    utility2 = utility2 + (0.5 * (i + 1) * genes[i]);
                 }
-                utility+= (float) Math.pow(tempFloat, 2);
-
-                tempFloat = 0;
-                for (int i = 0; i < genes.length; i++) {
-                    tempFloat+= (0.5f * i * genes[i]);
-                }
-                utility+= (float) Math.pow(tempFloat, 4);
+                return (float) (utility1 + Math.pow(utility2, 2) + Math.pow(utility2, 4));
             }
             case TEST -> {
                 for (float gene : genes) {

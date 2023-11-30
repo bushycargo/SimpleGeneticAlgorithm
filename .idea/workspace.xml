@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="394ec379-dcdc-44c9-b5c1-f0e7af1ddc4c" name="Changes" comment="Floating point mutation.">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="394ec379-dcdc-44c9-b5c1-f0e7af1ddc4c" name="Changes" comment="Graphs and algorithm fix.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/josephaines/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/josephaines/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/josephaines/sga/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/josephaines/sga/Data.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/josephaines/sga/individual/Individual.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/josephaines/sga/individual/Individual.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +93,7 @@
       <workItem from="1700505042184" duration="5192000" />
       <workItem from="1700759399884" duration="1751000" />
       <workItem from="1701030160651" duration="725000" />
-      <workItem from="1701318816111" duration="653000" />
+      <workItem from="1701318816111" duration="5499000" />
     </task>
     <task id="LOCAL-00001" summary="Inital Commit">
       <option name="closed" value="true" />
@@ -195,7 +191,15 @@
       <option name="project" value="LOCAL" />
       <updated>1698943025634</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Graphs and algorithm fix.">
+      <option name="closed" value="true" />
+      <created>1701319560828</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1701319560828</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -214,7 +218,8 @@
     <MESSAGE value="Added call for crossover and now outputs data correctly." />
     <MESSAGE value="Crossover" />
     <MESSAGE value="Floating point mutation." />
-    <option name="LAST_COMMIT_MESSAGE" value="Floating point mutation." />
+    <MESSAGE value="Graphs and algorithm fix." />
+    <option name="LAST_COMMIT_MESSAGE" value="Graphs and algorithm fix." />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

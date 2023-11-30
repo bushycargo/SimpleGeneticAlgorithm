@@ -11,6 +11,8 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
+        int averageOver = 10;
+
         int cycles1 = 100;
         int cycles2 = 100;
 
@@ -21,11 +23,16 @@ public class Main {
         SimpleGeneticAlgorithm algorithm2 = new SimpleGeneticAlgorithm(50, 20,
                 cycles2, 0.3f, 0.4f, -5f, 10f, Algorithm.TWO);
 
-        Data data1 = algorithm1.runAlgorithm();
-        Data data2 = algorithm2.runAlgorithm();
+        Data[] data1 = new Data[averageOver];
+        Data[] data2 = new Data[averageOver];
+        for (int i = 0; i < averageOver; i++) {
+            data1[i] = algorithm1.runAlgorithm();
+            data2[i] = algorithm2.runAlgorithm();
+        }
 
-        System.out.println(Arrays.toString(data1.averageUtility));
-        System.out.println(Arrays.toString(data1.minUtility));
+        Data avData1 = getAverageData(data1, cycles1, averageOver);
+        Data avData2 = getAverageData(data2, cycles2, averageOver);
+
 
         double[] gens1 = new double[cycles1];
         for (int i = 0; i < cycles1; i++) {
@@ -33,9 +40,9 @@ public class Main {
         }
 
         XYChart chart = QuickChart.getChart("Fitness over generations.", "Fitness", "Generations",
-                "Algorithm One", gens1, data1.averageUtility);
+                "Algorithm One", gens1,avData1.averageUtility);
         XYChart chart2 = QuickChart.getChart("Fitness over generations.", "Fitness", "Generations",
-                "Algorithm Two", gens1, data2.averageUtility);
+                "Algorithm Two", gens1,avData2.averageUtility);
         new SwingWrapper(chart).displayChart();
         new SwingWrapper(chart2).displayChart();
     }

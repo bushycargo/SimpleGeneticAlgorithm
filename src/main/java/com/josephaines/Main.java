@@ -6,6 +6,9 @@ import com.josephaines.sga.individual.Algorithm;
 import org.knowm.xchart.QuickChart;
 import org.knowm.xchart.SwingWrapper;
 import org.knowm.xchart.XYChart;
+import org.knowm.xchart.XYChartBuilder;
+import org.knowm.xchart.internal.ChartBuilder;
+import org.knowm.xchart.style.markers.SeriesMarkers;
 
 import java.util.Arrays;
 
@@ -62,12 +65,28 @@ public class Main {
             gens2[i] = i;
         }
 
-        XYChart chart = QuickChart.getChart("Fitness over generations.", "Fitness", "Generations",
-                "Algorithm One", gens1,avData1.averageUtility);
-        XYChart chart2 = QuickChart.getChart("Fitness over generations.", "Fitness", "Generations",
-                "Algorithm Two", gens2,avData2.averageUtility);
-        new SwingWrapper(chart).displayChart();
+        createGraph(avData1, gens1);
+
+        XYChart chart1 = createGraph(avData1, gens1);
+        XYChart chart2 = createGraph(avData2, gens2);
+
+        new SwingWrapper(chart1).displayChart();
         new SwingWrapper(chart2).displayChart();
+        System.out.println("Finished");
+    }
+
+    private static XYChart createGraph(Data avData, double[] gens) {
+        XYChart chart = new XYChartBuilder()
+                .width(800)
+                .height(600)
+                .xAxisTitle("Generation")
+                .yAxisTitle("Fitness").build();
+
+        chart.addSeries("Minimum", gens, avData.minUtility).setMarker(SeriesMarkers.NONE);
+        chart.addSeries("Average", gens, avData.averageUtility).setMarker(SeriesMarkers.NONE);
+        chart.addSeries("Maximum", gens, avData.maxUtility).setMarker(SeriesMarkers.NONE);
+
+        return chart;
     }
 
 

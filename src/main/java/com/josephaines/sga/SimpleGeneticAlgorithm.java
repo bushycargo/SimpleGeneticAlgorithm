@@ -82,14 +82,14 @@ public class SimpleGeneticAlgorithm {
                     }
                     bestData = dataPoints[i][j];
                 }
-                System.out.println("Current best data: \nMutation Prob: " + bestData.mutProb + "\nMutation Step:" + bestData.mutStep
-                + "\nAverage: " +bestData.averageUtility[bestData.averageUtility.length-1]);
+//                System.out.println("Current best data: \nMutation Prob: " + bestData.mutProb + "\nMutation Step:" + bestData.mutStep
+//                + "\nAverage: " +bestData.averageUtility[bestData.averageUtility.length-1]);
             }
         }
 
         assert bestData != null;
         System.out.println("\nBest data: \nMutation Prob: " + bestData.mutProb + "\nMutation Step:" + bestData.mutStep
-                + "\nAverage: " +bestData.averageUtility[bestData.averageUtility.length-1]);
+                + "\nBest Average Fitness: " +bestData.averageUtility[bestData.averageUtility.length-1]);
 
         System.out.println("Finding best population size");
         mutationStep = bestData.mutStep;

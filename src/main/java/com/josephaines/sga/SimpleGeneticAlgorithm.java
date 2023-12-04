@@ -23,12 +23,14 @@ public class SimpleGeneticAlgorithm {
     }
 
     public Data runAlgorithm(){
-        Data data = new Data(cycles);
-        Random random = new Random();
-
         Population population = new Population(geneLength);
         population.generatePopulation(algorithm, populationSize, min, max);
 
+        return run(population);
+    }
+
+    private Data run(Population population) {
+        Data data = new Data(cycles);
         for (int cycle = 0; cycle < cycles; cycle++) {
             Population offspring = new Population(geneLength, populationSize);
 
@@ -41,7 +43,9 @@ public class SimpleGeneticAlgorithm {
             data.maxUtility[cycle] = population.getMaxUtility();
             data.minUtility[cycle] = population.getMinUtility();
         }
-
+        data.mutProb = mutationProbability;
+        data.mutStep = mutationStep;
+        data.populationSize = populationSize;
         return data;
     }
 

@@ -60,10 +60,10 @@ public class SimpleGeneticAlgorithm {
                 Data[] cycleData = new Data[avOver];
                 for (int run = 0; run < avOver; run++) {
                     cycleData[run] = run(population);
-                    System.out.println("Running: " + currentRun + "/" + ((1/0.01f) * (mutationStepMax / stepper) * avOver));
+                    System.out.println("Running: " + (currentRun / ((1/0.01f) * (mutationStepMax / stepper) * avOver)) * 100 + "%");
+                    currentRun++;
                 }
                 dataPoints[step][probStep] = Data.getAverageData(cycleData, cycles, avOver);
-                currentRun++;
             }
 
         }
@@ -91,10 +91,10 @@ public class SimpleGeneticAlgorithm {
         System.out.println("\nBest data: \nMutation Prob: " + bestData.mutProb + "\nMutation Step:" + bestData.mutStep
                 + "\nBest Average Fitness: " +bestData.averageUtility[bestData.averageUtility.length-1]);
 
-        System.out.println("Finding best population size");
-        mutationStep = bestData.mutStep;
-        mutationProbability = bestData.mutProb;
-        populationSize = populationMin;
+//        System.out.println("Finding best population size");
+//        mutationStep = bestData.mutStep;
+//        mutationProbability = bestData.mutProb;
+//        populationSize = populationMin;
 
 //        EVERYTHING ABOVE THIS LINE WORKS. POPULATION TESTING IS DEAD STILL
 //        Data[] popDataPoints = new Data[populationMax / 5];

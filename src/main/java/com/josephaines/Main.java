@@ -40,7 +40,7 @@ public class Main {
 
         SimpleGeneticAlgorithm paramChecker = new SimpleGeneticAlgorithm(geneLength1, min1, max1, Algorithm.ONE, cycles1);
         System.out.println(paramChecker.findBestParameters(0.05f, 0.01f, 5f,
-                5, 200, 2).toString());
+                5, 200, 10).toString());
 
 
         // populationSize, geneLength, cycles, mutationProbability, mutationStep, min, max, Algorithm.ONE/TWO

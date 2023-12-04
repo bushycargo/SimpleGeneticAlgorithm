@@ -39,9 +39,6 @@ public class SimpleGeneticAlgorithm {
         mutationProbability = 0;
         populationSize = (populationMax + populationMin) / 2;
 
-        Population population = new Population(geneLength);
-        population.generatePopulation(algorithm, populationSize, min, max);
-
         System.out.println("Finding best Mutation Step and Mutation Chance combination");
 
         Data[][] dataPoints = new Data[(int) (mutationStepMax/ stepper)][(int) (1 / 0.01f) + 1];
@@ -59,6 +56,8 @@ public class SimpleGeneticAlgorithm {
 //                Average out over 10 runs
                 Data[] cycleData = new Data[avOver];
                 for (int run = 0; run < avOver; run++) {
+                    Population population = new Population(geneLength);
+                    population.generatePopulation(algorithm, populationSize, min, max);
                     cycleData[run] = run(population);
                     System.out.println("Running: " + (currentRun / ((1/0.01f) * (mutationStepMax / stepper) * avOver)) * 100 + "%");
                     currentRun++;
@@ -88,39 +87,10 @@ public class SimpleGeneticAlgorithm {
         }
 
         assert bestData != null;
-        System.out.println("\nBest data: \nMutation Prob: " + bestData.mutProb + "\nMutation Step:" + bestData.mutStep
+        System.out.println("\nBest data: \nMutation Prob: " + bestData.mutProb + "\nMutation Step: " + bestData.mutStep
                 + "\nBest Average Fitness: " +bestData.averageUtility[bestData.averageUtility.length-1]);
 
-//        System.out.println("Finding best population size");
-//        mutationStep = bestData.mutStep;
-//        mutationProbability = bestData.mutProb;
-//        populationSize = populationMin;
-
-//        EVERYTHING ABOVE THIS LINE WORKS. POPULATION TESTING IS DEAD STILL
-//        Data[] popDataPoints = new Data[populationMax / 5];
-//        for (int step = 0; step < populationMax / 5; step++) {
-//            populationSize += 5;
-//            population = new Population(geneLength);
-//            population.generatePopulation(algorithm, populationSize, min, max);
-//
-//            popDataPoints[step] = run(population);
-//        }
-//
-//        bestData = null;
-//        for (Data data:
-//             popDataPoints) {
-//            if (bestData == null){
-//                bestData = data;
-//                continue;
-//            }
-//            if (bestData.averageUtility[bestData.averageUtility.length-1] < data.averageUtility[data.averageUtility.length-1]){
-//                bestData = data;
-//            }
-//            System.out.println("Current best pop size: " + bestData.populationSize);
-//        }
-//        assert bestData != null;
-//        System.out.println("Best pop size: " + bestData.populationSize + "Average: " + bestData.averageUtility[bestData.averageUtility.length-1]);
-
+//        TODO: Implement best population search.
 
         return bestData;
     }

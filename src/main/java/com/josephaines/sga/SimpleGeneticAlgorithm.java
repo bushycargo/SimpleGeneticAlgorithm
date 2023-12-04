@@ -33,6 +33,97 @@ public class SimpleGeneticAlgorithm {
         this.cycles = cycles;
     }
 
+    public Data findBestParameters(float stepper, float mutationStepMin, float mutationStepMax,
+                                      int populationMax, int populationMin, int avOver){
+        mutationStep = mutationStepMin;
+        mutationProbability = 0;
+        populationSize = (populationMax + populationMin) / 2;
+
+        Population population = new Population(geneLength);
+        population.generatePopulation(algorithm, populationSize, min, max);
+
+        System.out.println("Finding best Mutation Step and Mutation Chance combination");
+
+        Data[][] dataPoints = new Data[(int) (mutationStepMax/ stepper)][(int) (1 / 0.01f) + 1];
+
+        int currentRun = 1;
+//        Run for the number of steps required.
+        for (int step = 0; step < (mutationStepMax / stepper); step++) {
+            mutationStep += stepper;
+            mutationProbability = 0;
+
+//            Test variations of probability on the step value increasing in 1%
+            for (int probStep = 0; probStep < (1/0.01f); probStep++) {
+                mutationProbability += 0.01f;
+
+//                Average out over 10 runs
+                Data[] cycleData = new Data[avOver];
+                for (int run = 0; run < avOver; run++) {
+                    cycleData[run] = run(population);
+                    System.out.println("Running: " + currentRun + "/" + ((1/0.01f) * (mutationStepMax / stepper) * avOver));
+                }
+                dataPoints[step][probStep] = Data.getAverageData(cycleData, cycles, 1);
+                currentRun++;
+            }
+
+        }
+
+        Data bestData = null;
+        for (int i = 0; i < (mutationStepMax/ stepper); i++) {
+            for (int j = 0; j < 100; j++) {
+                if (bestData == null){
+                    bestData = dataPoints[i][j];
+                    continue;
+                }
+                if (dataPoints[i][j].averageUtility[dataPoints[i][j].averageUtility.length-1] <
+                        bestData.averageUtility[bestData.averageUtility.length-1]){
+                    if (dataPoints[i][j].averageUtility[dataPoints[i][j].averageUtility.length-1] < 0){
+                        continue;
+                    }
+                    bestData = dataPoints[i][j];
+                }
+                System.out.println("Current best data: \nMutation Prob: " + bestData.mutProb + "\nMutation Step:" + bestData.mutStep
+                + "\nAverage: " +bestData.averageUtility[bestData.averageUtility.length-1]);
+            }
+        }
+
+        assert bestData != null;
+        System.out.println("\nBest data: \nMutation Prob: " + bestData.mutProb + "\nMutation Step:" + bestData.mutStep
+                + "\nAverage: " +bestData.averageUtility[bestData.averageUtility.length-1]);
+
+        System.out.println("Finding best population size");
+        mutationStep = bestData.mutStep;
+        mutationProbability = bestData.mutProb;
+        populationSize = populationMin;
+
+//        EVERYTHING ABOVE THIS LINE WORKS. POPULATION TESTING IS DEAD STILL
+//        Data[] popDataPoints = new Data[populationMax / 5];
+//        for (int step = 0; step < populationMax / 5; step++) {
+//            populationSize += 5;
+//            population = new Population(geneLength);
+//            population.generatePopulation(algorithm, populationSize, min, max);
+//
+//            popDataPoints[step] = run(population);
+//        }
+//
+//        bestData = null;
+//        for (Data data:
+//             popDataPoints) {
+//            if (bestData == null){
+//                bestData = data;
+//                continue;
+//            }
+//            if (bestData.averageUtility[bestData.averageUtility.length-1] < data.averageUtility[data.averageUtility.length-1]){
+//                bestData = data;
+//            }
+//            System.out.println("Current best pop size: " + bestData.populationSize);
+//        }
+//        assert bestData != null;
+//        System.out.println("Best pop size: " + bestData.populationSize + "Average: " + bestData.averageUtility[bestData.averageUtility.length-1]);
+
+
+        return bestData;
+    }
     public Data runAlgorithm(){
         Population population = new Population(geneLength);
         population.generatePopulation(algorithm, populationSize, min, max);

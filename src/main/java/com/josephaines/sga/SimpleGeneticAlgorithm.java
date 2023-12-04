@@ -10,16 +10,27 @@ public class SimpleGeneticAlgorithm {
     float mutationProbability, mutationStep, min, max;
     Algorithm algorithm;
 
+//    For set parameters
     public SimpleGeneticAlgorithm(int populationSize, int geneLength, int cycles, float mutationProbability,
                                   float mutationStep, float min, float max, Algorithm algorithm) {
-        this.populationSize = populationSize;
         this.geneLength = geneLength;
-        this.cycles = cycles;
-        this.mutationProbability = mutationProbability;
-        this.mutationStep = mutationStep;
         this.min = min;
         this.max = max;
         this.algorithm = algorithm;
+        this.cycles = cycles;
+
+        this.populationSize = populationSize;
+        this.mutationProbability = mutationProbability;
+        this.mutationStep = mutationStep;
+    }
+
+//    For finding parameters
+    public SimpleGeneticAlgorithm(int geneLength, float min, float max, Algorithm algorithm, int cycles){
+        this.geneLength = geneLength;
+        this.min = min;
+        this.max = max;
+        this.algorithm = algorithm;
+        this.cycles = cycles;
     }
 
     public Data runAlgorithm(){

@@ -4,6 +4,9 @@ public class Data {
     public double[] averageUtility;
     public double[] maxUtility;
     public double[] minUtility;
+    public float mutStep;
+    public float mutProb;
+    public float populationSize;
 
     public Data(int cycles) {
         averageUtility = new double[cycles];
@@ -24,6 +27,9 @@ public class Data {
             avData.minUtility[generation] = avData.minUtility[generation] / averageOver;
             avData.maxUtility[generation] = avData.maxUtility[generation] / averageOver;
         }
+        avData.mutStep = data[0].mutStep;
+        avData.mutProb = data[0].mutProb;
+        avData.populationSize = data[0].populationSize;
         return avData;
     }
 }

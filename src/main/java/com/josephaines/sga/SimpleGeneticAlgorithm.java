@@ -10,25 +10,99 @@ public class SimpleGeneticAlgorithm {
     float mutationProbability, mutationStep, min, max;
     Algorithm algorithm;
 
+//    For set parameters
     public SimpleGeneticAlgorithm(int populationSize, int geneLength, int cycles, float mutationProbability,
                                   float mutationStep, float min, float max, Algorithm algorithm) {
-        this.populationSize = populationSize;
         this.geneLength = geneLength;
-        this.cycles = cycles;
-        this.mutationProbability = mutationProbability;
-        this.mutationStep = mutationStep;
         this.min = min;
         this.max = max;
         this.algorithm = algorithm;
+        this.cycles = cycles;
+
+        this.populationSize = populationSize;
+        this.mutationProbability = mutationProbability;
+        this.mutationStep = mutationStep;
     }
 
-    public Data runAlgorithm(){
-        Data data = new Data(cycles);
-        Random random = new Random();
+//    For finding parameters
+    public SimpleGeneticAlgorithm(int geneLength, float min, float max, Algorithm algorithm, int cycles){
+        this.geneLength = geneLength;
+        this.min = min;
+        this.max = max;
+        this.algorithm = algorithm;
+        this.cycles = cycles;
+    }
 
+    public Data findBestParameters(float stepper, float mutationStepMin, float mutationStepMax,
+                                      int populationMax, int populationMin, int avOver){
+        mutationStep = mutationStepMin;
+        mutationProbability = 0;
+        populationSize = (populationMax + populationMin) / 2;
+
+        System.out.println("Finding best Mutation Step and Mutation Chance combination");
+
+        Data[][] dataPoints = new Data[(int) (mutationStepMax/ stepper)][(int) (1 / 0.01f) + 1];
+
+        int currentRun = 1;
+//        Run for the number of steps required.
+        for (int step = 0; step < (mutationStepMax / stepper); step++) {
+            mutationStep += stepper;
+            mutationProbability = 0;
+
+//            Test variations of probability on the step value increasing in 1%
+            for (int probStep = 0; probStep < (1/0.01f); probStep++) {
+                mutationProbability += 0.01f;
+
+//                Average out over 10 runs
+                Data[] cycleData = new Data[avOver];
+                for (int run = 0; run < avOver; run++) {
+                    Population population = new Population(geneLength);
+                    population.generatePopulation(algorithm, populationSize, min, max);
+                    cycleData[run] = run(population);
+                    System.out.println("Running: " + (currentRun / ((1/0.01f) * (mutationStepMax / stepper) * avOver)) * 100 + "%");
+                    currentRun++;
+                }
+                dataPoints[step][probStep] = Data.getAverageData(cycleData, cycles, avOver);
+            }
+
+        }
+
+        Data bestData = null;
+        for (int i = 0; i < (mutationStepMax/ stepper); i++) {
+            for (int j = 0; j < 100; j++) {
+                if (bestData == null){
+                    bestData = dataPoints[i][j];
+                    continue;
+                }
+                if (dataPoints[i][j].averageUtility[dataPoints[i][j].averageUtility.length-1] <
+                        bestData.averageUtility[bestData.averageUtility.length-1]){
+                    if (dataPoints[i][j].averageUtility[dataPoints[i][j].averageUtility.length-1] < 0){
+                        continue;
+                    }
+                    bestData = dataPoints[i][j];
+                }
+//                System.out.println("Current best data: \nMutation Prob: " + bestData.mutProb + "\nMutation Step:" + bestData.mutStep
+//                + "\nAverage: " +bestData.averageUtility[bestData.averageUtility.length-1]);
+            }
+        }
+
+        assert bestData != null;
+        System.out.println("\nBest data: \nMutation Prob: " + bestData.mutProb + "\nMutation Step: " + bestData.mutStep
+                + "\nBest Average Fitness: " +bestData.averageUtility[bestData.averageUtility.length-1]);
+
+//        TODO: Implement best population search.
+
+        return bestData;
+    }
+    public Data runAlgorithm(){
         Population population = new Population(geneLength);
         population.generatePopulation(algorithm, populationSize, min, max);
 
+        return run(population);
+    }
+
+    private Data run(Population population) {
+        Data data = new Data(cycles);
         for (int cycle = 0; cycle < cycles; cycle++) {
             Population offspring = new Population(geneLength, populationSize);
 
@@ -41,7 +115,9 @@ public class SimpleGeneticAlgorithm {
             data.maxUtility[cycle] = population.getMaxUtility();
             data.minUtility[cycle] = population.getMinUtility();
         }
-
+        data.mutProb = mutationProbability;
+        data.mutStep = mutationStep;
+        data.populationSize = populationSize;
         return data;
     }
 

@@ -38,6 +38,11 @@ public class Main {
         float min2 = -5f;
         float max2 = 10f;
 
+        SimpleGeneticAlgorithm paramChecker = new SimpleGeneticAlgorithm(geneLength1, min1, max1, Algorithm.ONE, cycles1);
+        System.out.println(paramChecker.findBestParameters(0.05f, 0.01f, 5f,
+                5, 200, 10).toString());
+
+
         // populationSize, geneLength, cycles, mutationProbability, mutationStep, min, max, Algorithm.ONE/TWO
         SimpleGeneticAlgorithm algorithm1 = new SimpleGeneticAlgorithm(popSize1, geneLength1,
                 cycles1, mutationProbability1, mutationStep1, min1, max1, Algorithm.ONE);

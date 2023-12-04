@@ -62,7 +62,7 @@ public class SimpleGeneticAlgorithm {
                     cycleData[run] = run(population);
                     System.out.println("Running: " + currentRun + "/" + ((1/0.01f) * (mutationStepMax / stepper) * avOver));
                 }
-                dataPoints[step][probStep] = Data.getAverageData(cycleData, cycles, 1);
+                dataPoints[step][probStep] = Data.getAverageData(cycleData, cycles, avOver);
                 currentRun++;
             }
 

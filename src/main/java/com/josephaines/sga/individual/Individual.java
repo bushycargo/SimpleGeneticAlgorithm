@@ -26,10 +26,10 @@ public class Individual {
         float utility = 0;
         switch (algorithm){
             case ONE -> {
-                utility = (float) Math.pow((genes[0] - 1), 2);
                 for (int i = 1; i < genes.length; i++) {
                     utility = (float) (utility + (i * (((2 * (Math.pow(genes[i], 2))) - genes[i - 1]) * (2 * (Math.pow(genes[i], 2))) - genes[i - 1])));
                 }
+                return (float) (utility + (Math.pow(genes[0] - 1, 2)));
             }
             case TWO -> {
                 double utility1 = 0;

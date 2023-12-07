@@ -41,13 +41,17 @@ public class SimpleGeneticAlgorithm {
 
         System.out.println("Finding best Mutation Step and Mutation Chance combination");
 
-        Data[][] dataPoints = new Data[(int) (mutationStepMax/ stepper)][(int) (1 / 0.01f) + 1];
+        Data[][] dataPoints = new Data[(int) ((mutationStepMax) / stepper) + 1][(int) (1 / 0.01f) + 1];
 
         int currentRun = 1;
 //        Run for the number of steps required.
-        for (int step = 0; step < (mutationStepMax / stepper); step++) {
+        for (int step = 0; step < ((mutationStepMax) / stepper); step++) {
             mutationStep += stepper;
             mutationProbability = 0;
+
+            if (mutationStep == mutationStepMax){
+                break;
+            }
 
 //            Test variations of probability on the step value increasing in 1%
             for (int probStep = 0; probStep < (1/0.01f); probStep++) {
@@ -109,6 +113,13 @@ public class SimpleGeneticAlgorithm {
             tournamentSelection(population, offspring);
             crossover(offspring);
             floatMutation(offspring);
+
+//            Implementation of elitism
+            for (int i = 0; i < offspring.getPopulationSize(); i++) {
+                if (offspring.getIndividuals()[i].test() > population.getIndividuals()[i].test()){
+                    offspring.setIndividual(i, new Individual(algorithm, population.getIndividuals()[i].getGenes().clone()));
+                }
+            }
 
             population.setIndividuals(offspring.getIndividuals().clone());
             data.averageUtility[cycle] = population.getAverageUtility();
